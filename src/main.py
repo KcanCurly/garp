@@ -1,5 +1,5 @@
 from scapy.all import send, get_if_hwaddr
-from scapy.layers.l2 import ARP
+from scapy.layers.l2 import ARP, Ether
 import argparse
 import time
 import sys
@@ -15,7 +15,7 @@ def main():
     m = get_if_hwaddr(args.interface)
 
     # Send unsolicited ARP (Gratuitous ARP)
-    packet = ARP(
+    packet = Ether(dst="ff:ff:ff:ff:ff:ff") / ARP(
         op=2,           # ARP reply (even though unsolicited)
         psrc=args.ip,  # IP we're announcing
         hwsrc=m,  # Our MAC
