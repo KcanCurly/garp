@@ -27,6 +27,7 @@ def main():
         while True:
             send(packet, args.interface, verbose=False)
             time.sleep(args.interval)
-    except Exception:
+    except Exception as e:
+        print(e)
         print("Exiting...")
         sys.exit(1)
