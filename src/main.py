@@ -25,7 +25,7 @@ def main():
 
     try:
         while True:
-            send(packet, args.interface, verbose=False)
+            send(packet, verbose=False)
             time.sleep(args.interval)
     except Exception as e:
         print(e)
