@@ -1,4 +1,4 @@
-from scapy.all import sendp, get_if_hwaddr
+from scapy.all import send, get_if_hwaddr
 from scapy.layers.l2 import ARP
 import argparse
 import time
@@ -25,7 +25,7 @@ def main():
 
     try:
         while True:
-            sendp(packet, args.interface, verbose=False)
+            send(packet, args.interface, verbose=False)
             time.sleep(args.interval)
     except Exception:
         print("Exiting...")
